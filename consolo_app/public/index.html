@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consolo Bíblico</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1><i class="fas fa-book-bible icon-cross"></i>Busque conforto na Palavra</h1>
+      <p class="subtitle">Encontre paz e sabedoria através das escrituras sagradas</p>
+    </div>
+    
+    <div class="form-container">
+      <textarea id="pergunta" placeholder="Compartilhe seu problema ou dúvida..."></textarea>
+      <button onclick="buscarConsolo()"><i class="fas fa-dove"></i> Buscar resposta</button>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div id="resposta" class="resposta">
+      <div class="resposta-header">Sua resposta aparecerá aqui</div>
+      <div id="resposta-content" class="resposta-content">
+        Compartilhe seu problema e receba conforto baseado nas escrituras sagradas.
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Consolo Bíblico &copy; 2025 - Levando a palavra de Deus a todos que precisam</p>
+      <p>by Thiago Luiz pela direção do Senhor</p>
+    </div>
+  </div>
+
+  <script>
+    async function buscarConsolo() {
+      const pergunta = document.getElementById('pergunta').value;
+      const respostaDiv = document.getElementById('resposta-content');
+      const respostaContainer = document.getElementById('resposta');
+      
+      if (!pergunta.trim()) {
+        respostaDiv.textContent = "Por favor, compartilhe seu problema ou dúvida para receber uma resposta.";
+        return;
+      }
+      
+      respostaContainer.classList.add('loading');
+      respostaDiv.textContent = "Buscando sabedoria nas escrituras...";
+      
+      try {
+        const response = await fetch('/api/consolo', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pergunta })
+        });
+        
+        const data = await response.json();
+        respostaContainer.classList.remove('loading');
+        
+        if (data.resposta) {
+          respostaDiv.textContent = data.resposta;
+        } else {
+          respostaDiv.textContent = "Não foi possível encontrar uma resposta nas escrituras. Por favor, tente novamente.";
+        }
+      } catch (error) {
+        respostaContainer.classList.remove('loading');
+        respostaDiv.textContent = "Ocorreu um erro ao conectar com o servidor. Por favor, tente novamente mais tarde.";
+      }
+    }
+  </script>
+</body>
+</html>

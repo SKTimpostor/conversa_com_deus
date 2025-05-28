@@ -1,0 +1,309 @@
+/* Consolo Bíblico - Estilo Moderno e Cristão */
+
+/* Importação de fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+/* Variáveis de cores */
+:root {
+  --azul-celestial: #3498db;
+  --azul-celestial-escuro: #2980b9;
+  --dourado: #f1c40f;
+  --dourado-escuro: #f39c12;
+  --branco: #ffffff;
+  --branco-suave: #f5f5f5;
+  --roxo-real: #8e44ad;
+  --roxo-real-escuro: #7d3c98;
+  --cinza-claro: #ecf0f1;
+  --cinza-escuro: #34495e;
+  --sombra-suave: rgba(0, 0, 0, 0.1);
+}
+
+/* Reset e estilos gerais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: var(--branco-suave);
+  color: var(--cinza-escuro);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url('../images/biblia_aberta.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.92);
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Cabeçalho */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  color: var(--roxo-real);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px var(--sombra-suave);
+  position: relative;
+  display: inline-block;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--dourado), transparent);
+}
+
+.subtitle {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: var(--cinza-escuro);
+  margin-top: 1rem;
+}
+
+/* Formulário */
+.form-container {
+  width: 100%;
+  background-color: var(--branco);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px var(--sombra-suave);
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--azul-celestial), var(--roxo-real));
+  border-radius: 15px 0 0 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 1rem;
+  border: 1px solid var(--cinza-claro);
+  border-radius: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  resize: none;
+  margin-bottom: 1.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--azul-celestial);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+button {
+  background-color: var(--azul-celestial);
+  color: var(--branco);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s;
+}
+
+button:hover {
+  background-color: var(--azul-celestial-escuro);
+  transform: translateY(-2px);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Resposta */
+.resposta {
+  width: 100%;
+  background-color: var(--branco);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 20px var(--sombra-suave);
+  position: relative;
+  overflow: hidden;
+  min-height: 150px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.resposta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--dourado), var(--roxo-real));
+  border-radius: 0 15px 15px 0;
+}
+
+.resposta-header {
+  font-family: 'Cinzel', serif;
+  color: var(--roxo-real);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.resposta-header::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--dourado), transparent);
+}
+
+.resposta-content {
+  font-family: 'Lato', sans-serif;
+  line-height: 1.6;
+  color: var(--cinza-escuro);
+  white-space: pre-wrap;
+}
+
+/* Ícones e elementos decorativos */
+.icon-cross {
+  display: inline-block;
+  margin-right: 0.5rem;
+  color: var(--dourado);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--cinza-claro), transparent);
+  margin: 2rem 0;
+}
+
+/* Rodapé */
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--cinza-escuro);
+  opacity: 0.8;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.header, .form-container, .resposta {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.resposta.loading {
+  animation: pulse 1.5s infinite;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .form-container, .resposta {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .form-container, .resposta {
+    padding: 1.2rem;
+  }
+  
+  button {
+    width: 100%;
+  }
+}
